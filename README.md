@@ -3,6 +3,8 @@
 ## Overview
 Health Copilot is an AI-powered health tracking application built with Copilotkit, Next.js and React. It helps users monitor their daily sleep, water intake, and calorie consumption, providing visual feedback and personalized AI assistance.
 
+![Health Copilot UI](Health-copilot.png)
+
 ## Features
 - **Daily Activity Logging**: Track sleep, water intake, and calorie consumption.
 - **Goal Setting**: Set personalized goals for each health metric.
