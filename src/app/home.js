@@ -45,12 +45,12 @@ const HomePage = () => {
 
   useCopilotReadable({
     description: "The start date for overall global trend tracker",
-    value: startDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }),
+    value: startDate ? startDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }) : 'Not set',
   })
 
   useCopilotReadable({
     description: "The end date for overall global trend tracker",
-    value: endDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }),
+    value: endDate ? endDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }) : 'Not set',
   })
 
   useCopilotAction({
@@ -71,30 +71,34 @@ const HomePage = () => {
 
   useCopilotAction({
     name: "updateStartEndGlobalDate",
-    description: "updates the start and end date to the user specified date in PST time zone",
+    description: "updates the start and end date to the user specified date range in PST time zone",
     parameters: [
         {
             name: "startDate",
             type: "string",
-            description: "The current global trend start date",
+            description: "The global trend start date (or 'clear' to reset)",
             required: true,
         },
         {
             name: "endDate",
             type: "string",
-            description: "The current global trend end date",
+            description: "The global trend end date (or 'clear' to reset)",
             required: true,
         }
     ],
     handler: ({ startDate, endDate }) => {
-        console.log(startDate, endDate);
-        setStartDate(new Date(startDate));
-        setEndDate(new Date(endDate));
+        if (startDate.toLowerCase() === 'clear' || endDate.toLowerCase() === 'clear') {
+            setStartDate(null);
+            setEndDate(null);
+        } else {
+            setStartDate(new Date(startDate));
+            setEndDate(new Date(endDate));
+        }
     }
   })
  
   useCopilotChatSuggestions({
-    instructions: `Suggest most relevant next step, all the updates needs to be incremental by 1`,
+    instructions: `Suggest the top 3 actions user can take`,
     minSuggestions: 3, 
   });
 
@@ -161,14 +165,9 @@ const HomePage = () => {
           startDate={startDate}
           endDate={endDate}
           onChange={(update) => {
-            if (update[0] !== null && update[1] !== null) {
-                setStartDate(update[0])
-                setEndDate(update[1])
-            } else if (update[0] !== null) {
-                setStartDate(update[0])
-            } else if (update[1]  !== null) {
-                setEndDate(update[1])
-            }
+            const [newStartDate, newEndDate] = update;
+            setStartDate(newStartDate);
+            setEndDate(newEndDate);
           }}
           isClearable={true}
           className="text-gray-900 p-2 rounded mb-4"
