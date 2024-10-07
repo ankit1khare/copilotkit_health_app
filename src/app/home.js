@@ -34,11 +34,11 @@ const HomePage = () => {
 
 
   const dateReadable = useCopilotReadable({
-    description: "This is our current date that user is tracking their fitness stats",
+    description: "This is the current date for which the user is tracking their fitness stats",
     value: selectedDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
   })
   useCopilotReadable({
-    description: "Current socres for each of our trackers, sleep, water, calories and overall score",
+    description: "Current scores for each of our trackers: sleep, water, calories, and overall score",
     value: scores,
     parentId: dateReadable
   })
@@ -132,7 +132,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 p-6 text-white">
-      <h1 className="text-4xl font-bold mb-6 text-center">Health and Wealth Assistant</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">Health Copilot</h1>
 
       <div className="mb-4 text-center">
         <h2 className="text-xl font-semibold mb-2">Select Date to Log Activities</h2>

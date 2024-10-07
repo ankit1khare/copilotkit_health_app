@@ -51,7 +51,7 @@ const WaterTracker = ({ selectedDate, updateOverallScore }) => {
 
   useCopilotAction({
     name: "setWaterIntake",
-    description: "updates the our current water intake",
+    description: "updates the current water intake",
     parameters: [
       {
           name: "newWaterIntake",
@@ -67,7 +67,7 @@ const WaterTracker = ({ selectedDate, updateOverallScore }) => {
 
   useCopilotAction({
     name: "setWaterIntakeGoal",
-    description: "Updates our current water intake goal",
+    description: "Updates the current water intake goal",
     parameters: [
         {
             name: "newWaterIntakeGoal",

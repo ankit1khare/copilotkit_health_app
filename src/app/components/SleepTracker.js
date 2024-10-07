@@ -55,12 +55,12 @@ const SleepTracker = ({ selectedDate, updateOverallScore }) => {
 
   useCopilotAction({
     name: "setSleepHours",
-    description: "updates the our current sleep hours",
+    description: "updates the current sleep hours",
     parameters: [
         {
             name: "newSleepHours",
             type: "number",
-            description: "The current hours our sleep for the given date",
+            description: "The current hours of sleep for the given date",
             required: true,
         }
     ],
@@ -71,7 +71,7 @@ const SleepTracker = ({ selectedDate, updateOverallScore }) => {
 
   useCopilotAction({
     name: "setSleepGoal",
-    description: "Updates our current sleep goal",
+    description: "Updates the current sleep goal",
     parameters: [
         {
             name: "newSleepGoal",
