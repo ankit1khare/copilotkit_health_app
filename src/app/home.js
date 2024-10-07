@@ -76,13 +76,13 @@ const HomePage = () => {
         {
             name: "startDate",
             type: "string",
-            description: "The global trend start date (or 'clear' to reset)",
+            description: "The global trend start date in PST time zone (or 'clear' to reset)",
             required: true,
         },
         {
             name: "endDate",
             type: "string",
-            description: "The global trend end date (or 'clear' to reset)",
+            description: "The global trend end date in PST time zone (or 'clear' to reset)",
             required: true,
         }
     ],
@@ -98,7 +98,7 @@ const HomePage = () => {
   })
  
   useCopilotChatSuggestions({
-    instructions: `Suggest the top 3 actions user can take`,
+    instructions: `Suggest the top 3 most relevant actions user can take and ask the user if they want to proceed.`,
     minSuggestions: 3, 
   });
 
