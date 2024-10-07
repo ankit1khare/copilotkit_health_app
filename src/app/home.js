@@ -66,6 +66,7 @@ const HomePage = () => {
     ],
     handler: ({ date }) => {
         setSelectedDate(new Date(date));
+        return "Date updated successfully"
     }
   })
 
@@ -90,9 +91,11 @@ const HomePage = () => {
         if (startDate.toLowerCase() === 'clear' || endDate.toLowerCase() === 'clear') {
             setStartDate(null);
             setEndDate(null);
+            return "Global trend date range cleared"
         } else {
             setStartDate(new Date(startDate));
             setEndDate(new Date(endDate));
+            return "Global trend date range updated successfully"
         }
     }
   })
